@@ -2,6 +2,7 @@ package net.zeal.tutorialmod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.ModItemGroups;
 import net.zeal.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
@@ -22,5 +23,6 @@ public class TutorialMod implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModItemGroups.registerItemGroups();
+		ModBlocks.registerModBlocks();
 	}
 }
