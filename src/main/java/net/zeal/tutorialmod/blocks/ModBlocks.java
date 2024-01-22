@@ -15,6 +15,8 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.zeal.tutorialmod.TutorialMod;
 
 public class ModBlocks {
+    // These declare the existence of various modded blocks. These aren't explicitly loaded, but are loaded if the class us loaded via registerModBlocks
+
     // Adopts the iron block's characteristics, but overrides its sounds with the amethyst block's.
     public static final Block RUBY_BLOCK = registerBlock("ruby_block",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.AMETHYST_BLOCK)));

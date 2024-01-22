@@ -11,10 +11,11 @@ import net.zeal.tutorialmod.TutorialMod;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 
 public class ModItemGroups {
-    public static final ItemGroup RUBY_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(TutorialMod.MOD_ID, "ruby"),
+    // Declares modded item groups. registeritemGroups must be called to load/run this method. Not sure how/why
+    public static final ItemGroup TUTORIAL_GROUP = Registry.register(Registries.ITEM_GROUP,
+            new Identifier(TutorialMod.MOD_ID, "tutorial"),
             FabricItemGroup.builder()
-                    .displayName(Text.translatable("itemgroup.ruby"))
+                    .displayName(Text.translatable("itemgroup.tutorial"))
                     .icon(() -> new ItemStack(ModItems.RUBY))
                     .entries((displayContent, entries) -> {
                         entries.add(ModItems.RUBY);
@@ -25,6 +26,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.NETHER_RUBY_ORE);
                         entries.add(ModBlocks.END_STONE_RUBY_ORE);
                         entries.add(ModBlocks.RUBY_ORE);
+                        entries.add(ModItems.METAL_DETECTOR);
                     })
                     .build());
     public static void registerItemGroups() {
