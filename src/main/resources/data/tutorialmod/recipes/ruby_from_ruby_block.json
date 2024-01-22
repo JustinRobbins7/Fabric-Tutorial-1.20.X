@@ -6,10 +6,8 @@
       "item": "tutorialmod:ruby_block"
     }
   ],
-  "result": [
-    {
+  "result": {
       "item": "tutorialmod:ruby",
       "count": 9
-    }
-  ]
+  }
 }
