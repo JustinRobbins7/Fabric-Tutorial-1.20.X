@@ -6,6 +6,7 @@ import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
 import net.zeal.tutorialmod.blocks.ModBlocks;
@@ -41,5 +42,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .input('R', ModItems.RUBY)
                 .criterion(hasItem(Items.STONE), conditionsFromItem(Items.STONE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.RAW_RUBY)));
+
+        // createX recipes must always define criterion and offerTo. offerX recipes don't need them.
+        createStairsRecipe(ModBlocks.RUBY_DOOR,
+                Ingredient.ofItems(ModItems.RUBY))
+                    .criterion(hasItem(ModItems.RUBY), conditionsFromItem(ModItems.RUBY))
+                    .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.RUBY_STAIRS)));
     }
 }

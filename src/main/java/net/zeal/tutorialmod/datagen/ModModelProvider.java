@@ -16,14 +16,29 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        // Add ruby texture pool for stairs, slabs, etc. Also handles the base block.
+        BlockStateModelGenerator.BlockTexturePool rubyPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.RUBY_BLOCK);
+
         // Adds blockstates and models (both block and item) for a simple block
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RUBY_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_RUBY_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RUBY_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_RUBY_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NETHER_RUBY_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.END_STONE_RUBY_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SOUND_BLOCK);
+
+        // Use texture pool to generate models for the stairs, slabs, etc.
+        rubyPool.stairs(ModBlocks.RUBY_STAIRS);
+        rubyPool.slab(ModBlocks.RUBY_SLAB);
+        rubyPool.button(ModBlocks.RUBY_BUTTON);
+        rubyPool.pressurePlate(ModBlocks.RUBY_PRESSURE_PLATE);
+        rubyPool.fence(ModBlocks.RUBY_FENCE);
+        rubyPool.fenceGate(ModBlocks.RUBY_FENCE_GATE);
+        rubyPool.wall(ModBlocks.RUBY_WALL);
+
+        // Doors don't use the texture pool
+        blockStateModelGenerator.registerDoor(ModBlocks.RUBY_DOOR);
+        blockStateModelGenerator.registerTrapdoor(ModBlocks.RUBY_TRAPDOOR);
     }
 
     @Override
