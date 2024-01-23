@@ -13,6 +13,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.zeal.tutorialmod.TutorialMod;
+import net.zeal.tutorialmod.blocks.custom.SoundBlock;
 
 public class ModBlocks {
     // These declare the existence of various modded blocks. These aren't explicitly loaded, but are loaded if the class us loaded via registerModBlocks
@@ -35,6 +36,9 @@ public class ModBlocks {
 
     public static final Block RUBY_ORE = registerBlock("ruby_ore",
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DIAMOND_ORE).strength(2.0f), UniformIntProvider.create(2, 5)));
+
+    public static final Block SOUND_BLOCK = registerBlock("sound_block",
+            new SoundBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

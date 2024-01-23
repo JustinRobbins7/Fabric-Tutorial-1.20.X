@@ -27,6 +27,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.END_STONE_RUBY_ORE);
                         entries.add(ModBlocks.RUBY_ORE);
                         entries.add(ModItems.METAL_DETECTOR);
+                        entries.add(ModBlocks.SOUND_BLOCK);
                     })
                     .build());
     public static void registerItemGroups() {
