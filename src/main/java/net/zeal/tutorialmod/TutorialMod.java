@@ -2,6 +2,7 @@ package net.zeal.tutorialmod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.ModItemGroups;
 import net.zeal.tutorialmod.item.ModItems;
@@ -24,5 +25,8 @@ public class TutorialMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModItemGroups.registerItemGroups();
 		ModBlocks.registerModBlocks();
+
+		// Adds fuel to registry
+		FuelRegistry.INSTANCE.add(ModItems.COAL_BRIQUETTE, 200);
 	}
 }
