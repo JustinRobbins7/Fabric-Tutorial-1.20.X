@@ -31,6 +31,16 @@ public class ModItems {
             new HoeItem(ModToolMaterial.RUBY, 2, 2f, new FabricItemSettings()));
 
 
+    public static final Item RUBY_HELMET = registerItem("ruby_helmet",
+            new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item RUBY_CHESTPLATE = registerItem("ruby_chestplate",
+            new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item RUBY_LEGGINGS = registerItem("ruby_leggings",
+            new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item RUBY_BOOTS = registerItem("ruby_boots",
+            new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
+
     private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries) {
         // Method to pass to item group events to register mod items into the creative menu
         // Add other items to the ingredients tab, could make another method to add more groups
