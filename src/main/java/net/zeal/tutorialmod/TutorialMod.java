@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.ModItemGroups;
 import net.zeal.tutorialmod.item.ModItems;
+import net.zeal.tutorialmod.util.ModLootTableModifiers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,5 +29,7 @@ public class TutorialMod implements ModInitializer {
 
 		// Adds fuel to registry
 		FuelRegistry.INSTANCE.add(ModItems.COAL_BRIQUETTE, 200);
+
+		ModLootTableModifiers.modifyLootTables();
 	}
 }
