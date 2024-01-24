@@ -44,8 +44,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         // Tool tags - same as file name
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.NETHER_RUBY_ORE)
-                .add(ModBlocks.SOUND_BLOCK);
+                .add(ModBlocks.NETHER_RUBY_ORE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.RUBY_BLOCK)
@@ -58,6 +57,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         // Fabric netherite mining level tag
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_4")))
                 .add(ModBlocks.END_STONE_RUBY_ORE);
+        getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_5")))
+                .add(ModBlocks.SOUND_BLOCK);
 
         // Fences and walls behaviors
         getOrCreateTagBuilder(BlockTags.FENCES)
