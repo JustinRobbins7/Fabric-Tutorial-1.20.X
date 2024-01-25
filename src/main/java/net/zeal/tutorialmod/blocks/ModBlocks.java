@@ -16,6 +16,7 @@ import net.zeal.tutorialmod.TutorialMod;
 import net.zeal.tutorialmod.blocks.custom.CornCropBlock;
 import net.zeal.tutorialmod.blocks.custom.SoundBlock;
 import net.zeal.tutorialmod.blocks.custom.TomatoCropBlock;
+import net.zeal.tutorialmod.sound.ModSounds;
 
 public class ModBlocks {
     // These declare the existence of various modded blocks. These aren't explicitly loaded, but are loaded if the class us loaded via registerModBlocks
@@ -40,7 +41,7 @@ public class ModBlocks {
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DIAMOND_ORE).strength(2.0f), UniformIntProvider.create(2, 5)));
 
     public static final Block SOUND_BLOCK = registerBlock("sound_block",
-            new SoundBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS)));
+            new SoundBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS).sounds(ModSounds.SOUND_BLOCK_SOUNDS)));
 
     public static final Block RUBY_STAIRS = registerBlock("ruby_stairs",
             new StairsBlock(ModBlocks.RUBY_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));

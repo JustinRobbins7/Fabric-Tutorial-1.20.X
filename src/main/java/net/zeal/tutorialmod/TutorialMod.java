@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.ModItemGroups;
 import net.zeal.tutorialmod.item.ModItems;
+import net.zeal.tutorialmod.sound.ModSounds;
 import net.zeal.tutorialmod.util.ModCustomTrades;
 import net.zeal.tutorialmod.util.ModLootTableModifiers;
 import net.zeal.tutorialmod.villager.ModVillagers;
@@ -36,5 +37,6 @@ public class TutorialMod implements ModInitializer {
 
 		ModCustomTrades.registerCustomTrades();
 		ModVillagers.registerVillagers();
+		ModSounds.registerSounds();
 	}
 }
