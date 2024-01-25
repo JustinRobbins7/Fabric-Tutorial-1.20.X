@@ -8,6 +8,7 @@ import net.minecraft.data.client.Models;
 import net.minecraft.item.ArmorItem;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.ModItems;
+import net.zeal.tutorialmod.item.custom.TomatoCropBlock;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -40,6 +41,9 @@ public class ModModelProvider extends FabricModelProvider {
         // Doors don't use the texture pool
         blockStateModelGenerator.registerDoor(ModBlocks.RUBY_DOOR);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.RUBY_TRAPDOOR);
+
+        // Crop
+        blockStateModelGenerator.registerCrop(ModBlocks.TOMATO_CROP, TomatoCropBlock.AGE, 0, 1, 2, 3, 4, 5);
     }
 
     @Override
@@ -64,6 +68,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor((ArmorItem)ModItems.RUBY_CHESTPLATE);
         itemModelGenerator.registerArmor((ArmorItem)ModItems.RUBY_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem)ModItems.RUBY_BOOTS);
+
 
     }
 }

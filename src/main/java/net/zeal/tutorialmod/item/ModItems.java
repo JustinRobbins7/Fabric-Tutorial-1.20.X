@@ -8,6 +8,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.zeal.tutorialmod.TutorialMod;
+import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.custom.MetalDetectorItem;
 import net.zeal.tutorialmod.item.custom.ModArmorItem;
 
@@ -41,6 +42,8 @@ public class ModItems {
     public static final Item RUBY_BOOTS = registerItem("ruby_boots",
             new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
+
+    public static final Item TOMATO_SEEDS = registerItem("tomato_seeds", new AliasedBlockItem(ModBlocks.TOMATO_CROP, new FabricItemSettings()));
 
     private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries) {
         // Method to pass to item group events to register mod items into the creative menu
