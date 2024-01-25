@@ -42,6 +42,8 @@ public class ModItemGroups {
                         entries.add(ModItems.CORN);
                         entries.add(ModItems.CORN_SEEDS);
 
+                        entries.add(ModBlocks.DAHLIA);
+
                         entries.add(ModBlocks.SOUND_BLOCK);
                         entries.add(ModBlocks.RUBY_BLOCK);
                         entries.add(ModBlocks.RAW_RUBY_BLOCK);
