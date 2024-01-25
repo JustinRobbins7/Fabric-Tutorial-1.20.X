@@ -1,4 +1,4 @@
-package net.zeal.tutorialmod.item.custom;
+package net.zeal.tutorialmod.blocks.custom;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

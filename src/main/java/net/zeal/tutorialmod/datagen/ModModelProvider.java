@@ -7,8 +7,9 @@ import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.item.ArmorItem;
 import net.zeal.tutorialmod.blocks.ModBlocks;
+import net.zeal.tutorialmod.blocks.custom.CornCropBlock;
 import net.zeal.tutorialmod.item.ModItems;
-import net.zeal.tutorialmod.item.custom.TomatoCropBlock;
+import net.zeal.tutorialmod.blocks.custom.TomatoCropBlock;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -42,8 +43,9 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerDoor(ModBlocks.RUBY_DOOR);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.RUBY_TRAPDOOR);
 
-        // Crop
+        // Crops
         blockStateModelGenerator.registerCrop(ModBlocks.TOMATO_CROP, TomatoCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+        blockStateModelGenerator.registerCrop(ModBlocks.CORN_CROP, CornCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7, 8);
     }
 
     @Override
@@ -55,6 +57,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.COAL_BRIQUETTE, Models.GENERATED);
         itemModelGenerator.register(ModItems.TOMATO, Models.GENERATED);
         itemModelGenerator.register(ModItems.METAL_DETECTOR, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.CORN, Models.GENERATED);
 
         // Handheld items e.g. tools
         itemModelGenerator.register(ModItems.RUBY_PICKAXE, Models.HANDHELD);
