@@ -8,7 +8,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerProfession;
+import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.ModItems;
+import net.zeal.tutorialmod.villager.ModVillagers;
 
 public class ModCustomTrades {
     public static void registerCustomTrades() {
@@ -55,6 +57,15 @@ public class ModCustomTrades {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.RUBY, 11),
                     EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(Enchantments.POWER, 2)),
+                    6, 5, 0.05f
+            ));
+        });
+
+        // New professions must have all trades defined in here
+        TradeOfferHelper.registerVillagerOffers(ModVillagers.SOUND_MASTER, 1, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(ModItems.RUBY, 12),
+                    new ItemStack(ModBlocks.SOUND_BLOCK, 1),
                     6, 5, 0.05f
             ));
         });

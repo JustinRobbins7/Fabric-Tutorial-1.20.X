@@ -8,6 +8,7 @@ import net.zeal.tutorialmod.item.ModItemGroups;
 import net.zeal.tutorialmod.item.ModItems;
 import net.zeal.tutorialmod.util.ModCustomTrades;
 import net.zeal.tutorialmod.util.ModLootTableModifiers;
+import net.zeal.tutorialmod.villager.ModVillagers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,5 +35,6 @@ public class TutorialMod implements ModInitializer {
 		ModLootTableModifiers.modifyLootTables();
 
 		ModCustomTrades.registerCustomTrades();
+		ModVillagers.registerVillagers();
 	}
 }

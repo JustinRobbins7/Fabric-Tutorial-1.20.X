@@ -22,8 +22,8 @@
   "item.tutorialmod.corn_seeds": "Corn Seeds",
   "item.tutorialmod.corn": "Corn",
 
-  "item.tutorialmod.dahlia": "Dahlia",
-  "item.tutorialmod.potted_dahlia": "Potted Dahlia",
+
+
 
   "block.tutorialmod.ruby_block": "Block of Ruby",
   "block.tutorialmod.raw_ruby_block": "Block of Raw Ruby",
@@ -41,8 +41,11 @@
   "block.tutorialmod.ruby_wall": "Ruby Wall",
   "block.tutorialmod.ruby_door": "Ruby Door",
   "block.tutorialmod.ruby_trapdoor": "Ruby Trapdoor",
+  "block.tutorialmod.dahlia": "Dahlia",
 
   "itemgroup.tutorial": "Tutorial Group",
 
-  "tooltip.tutorialmod.metal_detector.tooltip": "Finds valuables underground"
+  "tooltip.tutorialmod.metal_detector.tooltip": "Finds valuables underground",
+
+  "entity.minecraft.villager.sound_master": "Soundmaster"
 }
