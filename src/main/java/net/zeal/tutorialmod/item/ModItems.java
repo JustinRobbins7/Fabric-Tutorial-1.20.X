@@ -11,6 +11,7 @@ import net.zeal.tutorialmod.TutorialMod;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.item.custom.MetalDetectorItem;
 import net.zeal.tutorialmod.item.custom.ModArmorItem;
+import net.zeal.tutorialmod.sound.ModSounds;
 
 public class ModItems {
     public static final Item RUBY = registerItem("ruby", new Item(new FabricItemSettings()));
@@ -49,6 +50,9 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.CORN_CROP, new FabricItemSettings()));
     public static final Item CORN = registerItem("corn",
             new Item(new FabricItemSettings()));
+
+    public static final Item BAR_BRAWL_MUSIC_DISC = registerItem("bar_brawl_music_disc",
+            new MusicDiscItem(7, ModSounds.BAR_BRAWL, new FabricItemSettings().maxCount(1), 122));
 
     private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries) {
         // Method to pass to item group events to register mod items into the creative menu

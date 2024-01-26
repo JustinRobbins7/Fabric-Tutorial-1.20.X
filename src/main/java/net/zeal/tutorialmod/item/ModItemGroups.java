@@ -42,7 +42,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CORN);
                         entries.add(ModItems.CORN_SEEDS);
 
-                        entries.add(ModBlocks.DAHLIA);
+                        entries.add(ModItems.BAR_BRAWL_MUSIC_DISC);
 
                         entries.add(ModBlocks.SOUND_BLOCK);
                         entries.add(ModBlocks.RUBY_BLOCK);
@@ -60,6 +60,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.RUBY_WALL);
                         entries.add(ModBlocks.RUBY_DOOR);
                         entries.add(ModBlocks.RUBY_TRAPDOOR);
+
+                        entries.add(ModBlocks.DAHLIA);
                     })
                     .build());
     public static void registerItemGroups() {
