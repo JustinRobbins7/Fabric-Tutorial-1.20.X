@@ -1,6 +1,7 @@
 package net.zeal.tutorialmod.datagen;
 
 import net.minecraft.data.DataOutput;
+import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -25,7 +26,7 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(RecipeExporter exporter) {
         // Add smelting recipes
         offerSmelting(exporter, RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.RUBY,
                 0.7f, 200, "ruby"); // Note sure if this should be tutorial for the modified item group
