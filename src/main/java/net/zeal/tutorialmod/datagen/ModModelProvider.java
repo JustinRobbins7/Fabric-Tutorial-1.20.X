@@ -4,12 +4,16 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Model;
 import net.minecraft.data.client.Models;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.util.Identifier;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.blocks.custom.CornCropBlock;
 import net.zeal.tutorialmod.item.ModItems;
 import net.zeal.tutorialmod.blocks.custom.TomatoCropBlock;
+
+import java.util.Optional;
 
 public class ModModelProvider extends FabricModelProvider {
 
@@ -78,6 +82,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor((ArmorItem)ModItems.RUBY_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem)ModItems.RUBY_BOOTS);
 
-
+        // Mob Spawn Eggs
+        itemModelGenerator.register(ModItems.PORCUPINE_SPAWN_EGG,
+                new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
     }
 }

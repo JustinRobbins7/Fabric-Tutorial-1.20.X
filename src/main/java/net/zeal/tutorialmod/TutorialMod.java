@@ -2,8 +2,11 @@ package net.zeal.tutorialmod;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.zeal.tutorialmod.blocks.ModBlocks;
+import net.zeal.tutorialmod.entity.ModEntities;
+import net.zeal.tutorialmod.entity.custom.PorcupineEntity;
 import net.zeal.tutorialmod.item.ModItemGroups;
 import net.zeal.tutorialmod.item.ModItems;
 import net.zeal.tutorialmod.sound.ModSounds;
@@ -38,5 +41,9 @@ public class TutorialMod implements ModInitializer {
 		ModCustomTrades.registerCustomTrades();
 		ModVillagers.registerVillagers();
 		ModSounds.registerSounds();
+
+		ModEntities.registerModEntities();
+
+		FabricDefaultAttributeRegistry.register(ModEntities.PORCUPINE, PorcupineEntity.createPorcupineAttributes());
 	}
 }
