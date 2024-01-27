@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.zeal.tutorialmod.blocks.ModBlocks;
+import net.zeal.tutorialmod.blocks.entity.ModBlockEntities;
 import net.zeal.tutorialmod.entity.ModEntities;
 import net.zeal.tutorialmod.entity.custom.PorcupineEntity;
 import net.zeal.tutorialmod.item.ModItemGroups;
@@ -45,5 +46,7 @@ public class TutorialMod implements ModInitializer {
 		ModEntities.registerModEntities();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.PORCUPINE, PorcupineEntity.createPorcupineAttributes());
+
+		ModBlockEntities.registerBlockEntities();
 	}
 }

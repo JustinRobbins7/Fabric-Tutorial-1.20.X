@@ -4,12 +4,15 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.zeal.tutorialmod.blocks.ModBlocks;
 import net.zeal.tutorialmod.entity.ModEntities;
 import net.zeal.tutorialmod.entity.client.ModModelLayers;
 import net.zeal.tutorialmod.entity.client.PorcupineModel;
 import net.zeal.tutorialmod.entity.client.PorcupineRenderer;
+import net.zeal.tutorialmod.screen.GemPolishingScreen;
+import net.zeal.tutorialmod.screen.ModScreenHandlers;
 
 public class TutorialModClient implements ClientModInitializer {
 
@@ -29,5 +32,7 @@ public class TutorialModClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.PORCUPINE, PorcupineRenderer::new);
         // Register model layers for porcupine
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PORCUPINE, PorcupineModel::getTexturedModelData);
+
+        HandledScreens.register(ModScreenHandlers.GEM_POLISHING_SCREEN_HANDLER, GemPolishingScreen::new);
     }
 }
