@@ -180,6 +180,8 @@ public class PorcupineModel<T extends PorcupineEntity> extends SinglePartEntityM
 		this.animateMovement(ModAnimations.PORCUPINE_WALK, limbAngle, limbDistance, 2f, 2.5f);
 		// Play idle animation when idle
 		this.updateAnimation(entity.idleAnimationState, ModAnimations.PORCUPINE_IDLE, animationProgress, 1f);
+		// Play attack animation when attacking
+		this.updateAnimation(entity.attackAnimationState, ModAnimations.PORCUPINE_ATTACK, animationProgress, 1f);
 	}
 
 	private void setHeadAngles(float headYaw, float headPitch) {
