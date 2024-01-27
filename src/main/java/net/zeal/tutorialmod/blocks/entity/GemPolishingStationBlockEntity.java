@@ -1,16 +1,21 @@
 package net.zeal.tutorialmod.blocks.entity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.zeal.tutorialmod.item.ModItems;
+import net.zeal.tutorialmod.recipe.GemPolishingRecipe;
+import net.zeal.tutorialmod.screen.GemPolishingScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -18,9 +23,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.zeal.tutorialmod.item.ModItems;
-import net.zeal.tutorialmod.screen.GemPolishingScreenHandler;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class GemPolishingStationBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
@@ -32,13 +37,12 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements Exten
     private int progress = 0;
     private int maxProgress = 72;
 
-
     public GemPolishingStationBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.GEM_POLISHING_STATION_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
-                return switch(index){
+                return switch (index) {
                     case 0 -> GemPolishingStationBlockEntity.this.progress;
                     case 1 -> GemPolishingStationBlockEntity.this.maxProgress;
                     default -> 0;
@@ -55,7 +59,6 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements Exten
 
             @Override
             public int size() {
-                // Size of how many integers we're sync'ing
                 return 2;
             }
         };
@@ -63,20 +66,12 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements Exten
 
     @Override
     public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
-        // Sends block position to client/server
         buf.writeBlockPos(this.pos);
     }
 
     @Override
     public Text getDisplayName() {
-        // Should be Translatable
         return Text.literal("Gem Polishing Station");
-    }
-
-    @Nullable
-    @Override
-    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new GemPolishingScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     @Override
@@ -84,7 +79,6 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements Exten
         return inventory;
     }
 
-    // Enable inventory saving
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
@@ -99,14 +93,18 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements Exten
         progress = nbt.getInt("gem_polishing_station.progress");
     }
 
+    @Nullable
+    @Override
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+        return new GemPolishingScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+    }
+
     public void tick(World world, BlockPos pos, BlockState state) {
-        // Ensure logic is server side
         if(world.isClient()) {
             return;
         }
 
-        // Progress, then craft when progress reaches max
-        if (isOutputSlotEmptyOrReceivable()) {
+        if(isOutputSlotEmptyOrReceivable()) {
             if(this.hasRecipe()) {
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);
@@ -122,8 +120,6 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements Exten
             this.resetProgress();
             markDirty(world, pos, state);
         }
-        
-        
     }
 
     private void resetProgress() {
@@ -131,34 +127,43 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements Exten
     }
 
     private void craftItem() {
-        this.removeStack(INPUT_SLOT, 1);
-        ItemStack result = new ItemStack(ModItems.RUBY);
+        Optional<RecipeEntry<GemPolishingRecipe>> recipe = getCurrentRecipe();
 
-        this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.removeStack(INPUT_SLOT, 1);
+
+        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().value().getResult(null).getItem(),
+                getStack(OUTPUT_SLOT).getCount() + recipe.get().value().getResult(null).getCount()));
     }
 
     private boolean hasCraftingFinished() {
-        return this.progress >= this.maxProgress;
+        return progress >= maxProgress;
     }
 
     private void increaseCraftProgress() {
-        this.progress++;
+        progress++;
     }
 
     private boolean hasRecipe() {
-        ItemStack result = new ItemStack(ModItems.RUBY);
-        boolean hasInput = getStack(INPUT_SLOT).getItem() == ModItems.RAW_RUBY;
-        
-        return hasInput && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
+        Optional<RecipeEntry<GemPolishingRecipe>> recipe = getCurrentRecipe();
+
+        return recipe.isPresent() && canInsertAmountIntoOutputSlot(recipe.get().value().getResult(null))
+                && canInsertItemIntoOutputSlot(recipe.get().value().getResult(null).getItem());
+    }
+
+    private Optional<RecipeEntry<GemPolishingRecipe>> getCurrentRecipe() {
+        SimpleInventory inv = new SimpleInventory(this.size());
+        for(int i = 0; i < this.size(); i++) {
+            inv.setStack(i, this.getStack(i));
+        }
+
+        return getWorld().getRecipeManager().getFirstMatch(GemPolishingRecipe.Type.INSTANCE, inv, getWorld());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        // Check if empty or if items currently in slot are the same as result item
         return this.getStack(OUTPUT_SLOT).getItem() == item || this.getStack(OUTPUT_SLOT).isEmpty();
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
-        // Check if there is enough room in output slot for the result
         return this.getStack(OUTPUT_SLOT).getCount() + result.getCount() <= getStack(OUTPUT_SLOT).getMaxCount();
     }
 

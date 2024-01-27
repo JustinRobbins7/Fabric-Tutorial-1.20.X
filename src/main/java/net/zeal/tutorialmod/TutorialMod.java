@@ -10,6 +10,7 @@ import net.zeal.tutorialmod.entity.ModEntities;
 import net.zeal.tutorialmod.entity.custom.PorcupineEntity;
 import net.zeal.tutorialmod.item.ModItemGroups;
 import net.zeal.tutorialmod.item.ModItems;
+import net.zeal.tutorialmod.recipe.ModRecipes;
 import net.zeal.tutorialmod.sound.ModSounds;
 import net.zeal.tutorialmod.util.ModCustomTrades;
 import net.zeal.tutorialmod.util.ModLootTableModifiers;
@@ -48,5 +49,7 @@ public class TutorialMod implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.PORCUPINE, PorcupineEntity.createPorcupineAttributes());
 
 		ModBlockEntities.registerBlockEntities();
+
+		ModRecipes.registerRecipes();
 	}
 }
