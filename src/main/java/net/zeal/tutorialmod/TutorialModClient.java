@@ -11,6 +11,10 @@ import net.zeal.tutorialmod.entity.ModEntities;
 import net.zeal.tutorialmod.entity.client.ModModelLayers;
 import net.zeal.tutorialmod.entity.client.PorcupineModel;
 import net.zeal.tutorialmod.entity.client.PorcupineRenderer;
+import net.zeal.tutorialmod.entity.client.stitched.StitchedBipedBodyModel;
+import net.zeal.tutorialmod.entity.client.stitched.StitchedBipedBodyRenderer;
+import net.zeal.tutorialmod.entity.client.stitched.StitchedBipedLegsModel;
+import net.zeal.tutorialmod.entity.client.stitched.StitchedBipedLegsRenderer;
 import net.zeal.tutorialmod.screen.GemPolishingScreen;
 import net.zeal.tutorialmod.screen.ModScreenHandlers;
 
@@ -32,6 +36,12 @@ public class TutorialModClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.PORCUPINE, PorcupineRenderer::new);
         // Register model layers for porcupine
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.PORCUPINE, PorcupineModel::getTexturedModelData);
+
+        // Stitched stuff
+        EntityRendererRegistry.register(ModEntities.STITCHED_BIPED_BODY, StitchedBipedBodyRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.STITCHED_BIPED_BODY, StitchedBipedBodyModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.STITCHED_BIPED_LEGS, StitchedBipedLegsRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.STITCHED_BIPED_LEGS, StitchedBipedLegsModel::getTexturedModelData);
 
         HandledScreens.register(ModScreenHandlers.GEM_POLISHING_SCREEN_HANDLER, GemPolishingScreen::new);
     }

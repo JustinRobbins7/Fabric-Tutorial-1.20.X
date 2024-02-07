@@ -17,10 +17,6 @@ public class PorcupineModel<T extends PorcupineEntity> extends SinglePartEntityM
 	private final ModelPart porcupine;
 	private final ModelPart head;
 
-	public PorcupineModel(ModelPart root) {
-		this.porcupine = root.getChild("porcupine");
-		this.head = porcupine.getChild("body").getChild("torso").getChild("head");
-	}
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
@@ -161,6 +157,11 @@ public class PorcupineModel<T extends PorcupineEntity> extends SinglePartEntityM
 		return TexturedModelData.of(modelData, 32, 32);
 	}
 
+	public PorcupineModel(ModelPart root) {
+		this.porcupine = root.getChild("porcupine");
+		this.head = porcupine.getChild("body").getChild("torso").getChild("head");
+	}
+
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
 		porcupine.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
@@ -190,5 +191,8 @@ public class PorcupineModel<T extends PorcupineEntity> extends SinglePartEntityM
 
 		this.head.yaw = headYaw * 0.017453292F;
 		this.head.pitch = headPitch * 0.017453292F;
+
 	}
+
+
 }
